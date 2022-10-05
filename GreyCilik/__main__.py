@@ -199,7 +199,7 @@ from telethon.errors import (
 
 def stringsesi():
 query = update.callback_query
-query.data == "sesistring":
+query.data == "sesistring": (
 @Client.on_message(filters.private & ~filters.forwarded & filters.command(["generate", "gen", "string", "str"]))
 def sesi(_, msg):
 ask_ques == "**Pilih String Yang Kamu mau :**"
@@ -314,7 +314,7 @@ def cancelled(msg):
         return True
     else:
         return False
-        
+)
         
         
         
@@ -614,7 +614,7 @@ def cilik_about_callback(update, context):
             f"\nHere Developers Making And Give Inspiration For Made The {dispatcher.bot.first_name}",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
-                [
+                 [
                     InlineKeyboardButton(text="Grey", url="https://github.com/grey423"),
                  [
                     InlineKeyboardButton(text="sena-ex", url="https://github.com/kennedy-ex"),
