@@ -197,7 +197,6 @@ from telethon.errors import (
 )
 
 
-def stringsesi(): (
 def sesi(_, msg):
 ask_ques == "**Pilih String Yang Kamu mau :**"
 buttons_ques = [
@@ -311,7 +310,6 @@ def cancelled(msg):
         return True
     else:
         return False
-)
         
         
         
