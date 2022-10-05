@@ -201,7 +201,7 @@ def sesi(_, msg):
 query = update.callback_query
 if query.data == "sstring":
 query.message.edit_text(
-text=f"="**Pilih String Yang Kamu mau :**"
+text=f"**Pilih String Yang Kamu mau :**"
 reply_markup=InlineKeyboardMarkup[
     [
         InlineKeyboardButton("ᴩʏʀᴏɢʀᴀᴍ", callback_data="pyrogram"),
