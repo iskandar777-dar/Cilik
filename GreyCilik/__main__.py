@@ -314,7 +314,6 @@ def cancelled(msg):
         return True
     else:
         return False
-    )
         
         
         
