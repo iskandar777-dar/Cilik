@@ -993,7 +993,7 @@ def main():
         Filters.status_update.migrate, migrate_chats, run_async=True
     )
 
-    dispatcher.add_handler(sesistring)
+    dispatcher.add_handler(stringsesi)
     dispatcher.add_handler(test_handler)
     dispatcher.add_handler(start_handler)
     dispatcher.add_handler(help_handler)
