@@ -101,7 +101,7 @@ buttons = [
         InlineKeyboardButton(text="Help Music ❓", callback_data="source_"),
     ],
     [
-        InlineKeyboardButton(text="➗ Generate String ➗", callback="stringsesi"),
+        InlineKeyboardButton(text="➗ Generate String ➗", callback="sstring"),
     ],
     [
         InlineKeyboardButton(text=f"About {dispatcher.bot.first_name} 🤖", callback_data="cilik_"),
@@ -198,16 +198,18 @@ from telethon.errors import (
 
 
 def sesi(_, msg):
-ask_ques == "**Pilih String Yang Kamu mau :**"
-buttons_ques = [
+query = update.callback_query
+if query.data == "sstring":
+query.message.edit_text(
+text=f"="**Pilih String Yang Kamu mau :**"
+reply_markup=InlineKeyboardMarkup[
     [
         InlineKeyboardButton("ᴩʏʀᴏɢʀᴀᴍ", callback_data="pyrogram"),
     ],
     [
         InlineKeyboardButton("ᴛᴇʟᴇᴛʜᴏɴ", callback_data="telethon"),
     ],
-] msg.reply(ask_ques, reply_markup=InlineKeyboardMarkup(buttons_ques))
-
+] )    
 def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: bool = False, is_bot: bool = False):
     if telethon:
         ty = "ᴛᴇʟᴇᴛʜᴏɴ"
@@ -980,7 +982,7 @@ def main():
     )
     
     stringsesi = CallbackQueryHandler(
-        sesi, generate_session, cancelled, run_async=True
+        sesi, pattern=r"sstring", generate_session, cancelled, run_async=True
     )
 
     donate_handler = CommandHandler("donate", donate, run_async=True)
