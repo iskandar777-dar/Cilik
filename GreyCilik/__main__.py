@@ -197,7 +197,8 @@ from telethon.errors import (
 )
 
 
-def stringsesi(): (
+def stringsesi():
+query = update.callback_query
 query.data == "sesistring":
 @Client.on_message(filters.private & ~filters.forwarded & filters.command(["generate", "gen", "string", "str"]))
 def sesi(_, msg):
