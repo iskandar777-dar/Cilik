@@ -1,3 +1,8 @@
+ACAK = (
+    "Kamu dapat truth, klik /truth", 
+    "Kamu dapat dare, klik /dare", 
+)
+
 TRUTH = (
    "Kapan Terakhir Kali Kamu Coli?",
    "Kapan terakhir kali kamu berbohong?",
