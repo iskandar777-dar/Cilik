@@ -198,7 +198,6 @@ from telethon.errors import (
 
 
 def sesi(_, msg, update, context):
-query = update.callback_query
 query.data == "sstring":
 query.message.edit_text(
 text=f"**Pilih String Yang Kamu mau :**"
