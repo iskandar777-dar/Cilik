@@ -198,7 +198,6 @@ from telethon.errors import (
 
 
 def stringsesi(): (
-@Client.on_message(filters.private & ~filters.forwarded & filters.command(["generate", "gen", "string", "str"]))
 def sesi(_, msg):
 ask_ques == "**Pilih String Yang Kamu mau :**"
 buttons_ques = [
