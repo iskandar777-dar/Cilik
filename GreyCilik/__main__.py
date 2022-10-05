@@ -101,7 +101,7 @@ buttons = [
         InlineKeyboardButton(text="Help Music ❓", callback_data="source_"),
     ],
     [
-        InlineKeyboardButton(text="➗ Generate String ➗", callback="sstring"),
+        InlineKeyboardButton(text="➗ Generate String ➗", callback="sesi"),
     ],
     [
         InlineKeyboardButton(text=f"About {dispatcher.bot.first_name} 🤖", callback_data="cilik_"),
@@ -197,9 +197,7 @@ from telethon.errors import (
 )
 
 
-def sesi(_, msg, update, context):
-query.data == "sstring":
-query.message.edit_text(
+def sesi():
 text=f"**Pilih String Yang Kamu mau :**"
 reply_markup=InlineKeyboardMarkup[
     [
@@ -208,7 +206,8 @@ reply_markup=InlineKeyboardMarkup[
     [
         InlineKeyboardButton("ᴛᴇʟᴇᴛʜᴏɴ", callback_data="telethon"),
     ],
-] )    
+]
+
 def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: bool = False, is_bot: bool = False):
     if telethon:
         ty = "ᴛᴇʟᴇᴛʜᴏɴ"
@@ -980,8 +979,8 @@ def main():
         Source_about_callback, pattern=r"source_", run_async=True
     )
     
-    stringsesi = CallbackQueryHandler(
-        sesi, pattern=r"sstring", generate_session, cancelled, run_async=True
+    sesi_handler = CallbackQueryHandler(
+        sesi, generate_session, cancelled, run_async=True
     )
 
     donate_handler = CommandHandler("donate", donate, run_async=True)
@@ -989,7 +988,7 @@ def main():
         Filters.status_update.migrate, migrate_chats, run_async=True
     )
 
-    dispatcher.add_handler(stringsesi)
+    dispatcher.add_handler(sesi_handler)
     dispatcher.add_handler(test_handler)
     dispatcher.add_handler(start_handler)
     dispatcher.add_handler(help_handler)
@@ -1000,7 +999,6 @@ def main():
     dispatcher.add_handler(settings_callback_handler)
     dispatcher.add_handler(migrate_handler)
     dispatcher.add_handler(donate_handler)
-
     dispatcher.add_error_handler(error_callback)
 
     if WEBHOOK:
