@@ -101,7 +101,7 @@ buttons = [
         InlineKeyboardButton(text="Help Music ❓", callback_data="source_"),
     ],
     [
-        InlineKeyboardButton(text="➗ Generate String ➗", callback_data="stringsesi"),
+        InlineKeyboardButton(text="➗ Generate String ➗", callback_data="sesistring"),
     ],
     [
         InlineKeyboardButton(text=f"About {dispatcher.bot.first_name} 🤖", callback_data="cilik_"),
@@ -198,35 +198,24 @@ from telethon.errors import (
 
 
 def stringsesi(): (
-ask_ques = "**Pilih String Yang Kamu mau :**"
+query.data == "sesistring":
+@Client.on_message(filters.private & ~filters.forwarded & filters.command(["generate", "gen", "string", "str"]))
+def sesi(_, msg):
+ask_ques == "**Pilih String Yang Kamu mau :**"
 buttons_ques = [
     [
-        InlineKeyboardButton("ᴩʏʀᴏɢʀᴀᴍ", callback_data="pyrogram1"),
-        InlineKeyboardButton("ᴩʏʀᴏɢʀᴀᴍ ᴠ2", callback_data="pyrogram"),
+        InlineKeyboardButton("ᴩʏʀᴏɢʀᴀᴍ", callback_data="pyrogram"),
     ],
     [
         InlineKeyboardButton("ᴛᴇʟᴇᴛʜᴏɴ", callback_data="telethon"),
     ],
-    [
-        InlineKeyboardButton("ᴩʏʀᴏɢʀᴀᴍ ʙᴏᴛ", callback_data="pyrogram_bot"),
-        InlineKeyboardButton("ᴛᴇʟᴇᴛʜᴏɴ ʙᴏᴛ", callback_data="telethon_bot"),
-    ],
-]
-
-
-@Client.on_message(filters.private & ~filters.forwarded & filters.command(["generate", "gen", "string", "str"]))
-def sesi(_, msg):
-    msg.reply(ask_ques, reply_markup=InlineKeyboardMarkup(buttons_ques))
+] msg.reply(ask_ques, reply_markup=InlineKeyboardMarkup(buttons_ques))
 
 def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: bool = False, is_bot: bool = False):
     if telethon:
         ty = "ᴛᴇʟᴇᴛʜᴏɴ"
     else:
         ty = "ᴩʏʀᴏɢʀᴀᴍ"
-        if not old_pyro:
-            ty += " ᴠ2"
-    if is_bot:
-        ty += " ʙᴏᴛ"
     msg.reply(f"ᴍᴇɴᴄᴏʙᴀ ᴍᴇᴍᴜʟᴀɪ **{ty}** sᴇssɪᴏɴ ɢᴇɴᴇʀᴀᴛᴏʀ...")
     user_id = msg.chat.id
     api_id_msg = bot.ask(user_id, "ᴍᴇᴍᴘᴇʀᴏsᴇs sᴛʀɪɴɢ...\n\nᴘᴀsᴛᴇ **ᴀᴘɪ_ɪᴅ** ᴅɪʙᴀᴡᴀʜ.", filters=filters.text)
@@ -238,35 +227,16 @@ def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: bool =
         api_id_msg.reply("**ᴀᴘɪ_ɪᴅ** ʜᴀʀᴜs ʙᴇʀᴜᴘᴀ ᴀɴɢᴋᴀ, ᴍᴇᴍᴜʟᴀɪ ᴜʟᴀɴɢ ᴍᴇᴍʙᴜᴀᴛ sᴛʀɪɴɢ.", quote=True, reply_markup=InlineKeyboardMarkup(Data.generate_button))
         return
     api_hash_msg = bot.ask(user_id, "ᴘᴀsᴛᴇ **ᴀᴘɪ_ʜᴀsʜ** ᴅɪʙᴀᴡᴀʜ", filters=filters.text)
-    if cancelled(api_hash_msg):
-        return
-    api_hash = api_hash_msg.text
-    if not is_bot:
-        t = "ᴘᴀsᴛᴇ **ᴘʜᴏɴᴇ_ɴᴜᴍʙᴇʀ** ᴅᴇɴɢᴀɴ ᴋᴏᴅᴇ ɴᴇɢᴀʀᴀ. \nᴄᴏɴᴛᴏʜ : `+6287654321`'"
-    else:
-        t = "ᴘᴀsᴛᴇ **ʙᴏᴛ_ᴛᴏᴋᴇɴ** ᴅɪʙᴀᴡᴀʜ. \nᴄᴏɴᴛᴏʜ : `5432198765:abcdanonymousterabaaplol`'"
+    t = "ᴘᴀsᴛᴇ **ᴘʜᴏɴᴇ_ɴᴜᴍʙᴇʀ** ᴅᴇɴɢᴀɴ ᴋᴏᴅᴇ ɴᴇɢᴀʀᴀ. \nᴄᴏɴᴛᴏʜ : `+6287654321`'"
     phone_number_msg = bot.ask(user_id, t, filters=filters.text)
-    if cancelled(phone_number_msg):
-        return
-    phone_number = phone_number_msg.text
-    if not is_bot:
-        msg.reply("ᴍᴇɴᴄᴏʙᴀ ᴍᴇɴɢɪʀɪᴍ ᴏᴛᴘ, ᴊᴀɴɢᴀɴ ʟᴜᴘᴀ ᴅɪᴘᴀsᴛᴇ ᴋᴀʟᴏ ᴜᴅᴀʜ ᴍᴀsᴜᴋ...")
-    else:
-        msg.reply("ᴍᴇɴᴄᴏʙᴀ ʟᴏɢɪɴ ᴠɪᴀ ʙᴏᴛ ᴛᴏᴋᴇɴ...")
-    if telethon and is_bot:
-        client = TelegramClient(StringSession(), api_id, api_hash)
+    msg.reply("ᴍᴇɴᴄᴏʙᴀ ᴍᴇɴɢɪʀɪᴍ ᴏᴛᴘ, ᴊᴀɴɢᴀɴ ʟᴜᴘᴀ ᴅɪᴘᴀsᴛᴇ ᴋᴀʟᴏ ᴜᴅᴀʜ ᴍᴀsᴜᴋ...")
     elif telethon:
         client = TelegramClient(StringSession(), api_id, api_hash)
-    elif is_bot:
-        client = Client(name="bot", api_id=api_id, api_hash=api_hash, bot_token=phone_number, in_memory=True)
-    elif old_pyro:
-        client = Client1(":memory:", api_id=api_id, api_hash=api_hash)
     else:
         client = Client(name="user", api_id=api_id, api_hash=api_hash, in_memory=True)
     client.connect()
     try:
         code = None
-        if not is_bot:
             if telethon:
                 code = client.send_code_request(phone_number)
             else:
@@ -279,14 +249,11 @@ def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: bool =
         return
     try:
         phone_code_msg = None
-        if not is_bot:
-            phone_code_msg = bot.ask(user_id, "ᴘᴀsᴛᴇ **ᴏᴛᴩ** ʏᴀɴɢ ᴜᴅᴀʜ ᴅɪᴛᴇʀɪᴍᴀ ᴅɪʙᴀᴡᴀʜ.\nᴊɪᴋᴀ ᴏᴛᴩ sᴇᴘᴇʀᴛɪ  `12345`, \nɴᴀɴᴛɪ ᴋɪʀɪᴍɴʏᴀ ᴅɪʙᴇʀɪ sᴘᴀsɪ ᴋᴀʏᴀ ɢɪɴɪ `1 2 3 4 5`.", filters=filters.text, timeout=600)
-            if cancelled(phone_code_msg):
-                return
+        phone_code_msg = bot.ask(user_id, "ᴘᴀsᴛᴇ **ᴏᴛᴩ** ʏᴀɴɢ ᴜᴅᴀʜ ᴅɪᴛᴇʀɪᴍᴀ ᴅɪʙᴀᴡᴀʜ.\nᴊɪᴋᴀ ᴏᴛᴩ sᴇᴘᴇʀᴛɪ  `12345`, \nɴᴀɴᴛɪ ᴋɪʀɪᴍɴʏᴀ ᴅɪʙᴇʀɪ sᴘᴀsɪ ᴋᴀʏᴀ ɢɪɴɪ `1 2 3 4 5`.", filters=filters.text, timeout=600)
+         return
     except TimeoutError:
         msg.reply("ᴡᴀᴋᴛᴜ ʜᴀʙɪs.\n\nᴜʟᴀɴɢ ᴋᴇᴍʙᴀʟɪ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup(Data.generate_button))
         return
-    if not is_bot:
         phone_code = phone_code_msg.text.replace(" ", "")
         try:
             if telethon:
@@ -327,10 +294,7 @@ def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: bool =
         string_session = client.export_session_string()
     text = f"**sᴇʟᴀᴍᴀᴛ, {ty} sᴛʀɪɴɢ sᴇssɪᴏɴ** \n\n`{string_session}` \n\n**ɢᴇɴᴇʀᴀᴛᴇᴅ ʙʏ :** @someddarbot\n **ɴᴏᴛᴇ :** ɢᴜɴᴀᴋᴀɴ ᴅᴇɴɢᴀɴ ʙɪᴊᴀᴋ ᴅᴀɴ ᴊᴀɴɢᴀɴ ʟᴜᴘᴀ ᴊᴏɪɴ @somedsupport"
     try:
-        if not is_bot:
-            client.send_message("me", text)
-        else:
-            bot.send_message(msg.chat.id, text)
+        client.send_message("me", text)
     except KeyError:
         pass
     client.disconnect()
@@ -1019,12 +983,17 @@ def main():
     source_callback_handler = CallbackQueryHandler(
         Source_about_callback, pattern=r"source_", run_async=True
     )
+    
+    stringsesi = CallbackQueryHandler(
+        sesi, generate_session, cancelled, pattern=r"sesistring", run_async=True
+    )
 
     donate_handler = CommandHandler("donate", donate, run_async=True)
     migrate_handler = MessageHandler(
         Filters.status_update.migrate, migrate_chats, run_async=True
     )
 
+    dispatcher.add_handler(sesistring)
     dispatcher.add_handler(test_handler)
     dispatcher.add_handler(start_handler)
     dispatcher.add_handler(help_handler)
