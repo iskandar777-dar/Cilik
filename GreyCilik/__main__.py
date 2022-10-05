@@ -101,7 +101,7 @@ buttons = [
         InlineKeyboardButton(text="Help Music ❓", callback_data="source_"),
     ],
     [
-        InlineKeyboardButton(text="➗ Generate String ➗", callback_data="sesistring"),
+        InlineKeyboardButton(text="➗ Generate String ➗", callback="stringsesi"),
     ],
     [
         InlineKeyboardButton(text=f"About {dispatcher.bot.first_name} 🤖", callback_data="cilik_"),
@@ -197,8 +197,7 @@ from telethon.errors import (
 )
 
 
-def stringsesi():
-query.data == "sesistring": (
+def stringsesi(): (
 @Client.on_message(filters.private & ~filters.forwarded & filters.command(["generate", "gen", "string", "str"]))
 def sesi(_, msg):
 ask_ques == "**Pilih String Yang Kamu mau :**"
@@ -984,7 +983,7 @@ def main():
     )
     
     stringsesi = CallbackQueryHandler(
-        sesi, generate_session, cancelled, pattern=r"sesistring", run_async=True
+        sesi, generate_session, cancelled, run_async=True
     )
 
     donate_handler = CommandHandler("donate", donate, run_async=True)
