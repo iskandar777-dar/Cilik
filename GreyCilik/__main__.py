@@ -83,7 +83,7 @@ def get_readable_time(seconds: int) -> str:
 
 PM_START_TEXT = """
 *Hello {} !*
-✪ I'm an anime-theme management bot [✨](https://telegra.ph/file/a807460d64ac73c5dc83a.jpg)
+✪ I'm an anime-theme management bot [✨](https://telegra.ph/file/ba582d379f2586f227d66.png)
 ────────────────────────
 × *Uptime:* `{}`
 × `{}` *users, across* `{}` *chats.*
@@ -97,10 +97,12 @@ buttons = [
             text="➗ Add Me To Your Group ➗", url=f"t.me/{bu}?startgroup=new"),
     ],
     [
-        InlineKeyboardButton(text="Get Help ❓", callback_data="help_back"),
+        InlineKeyboardButton(text="Help Manage ❓", callback_data="help_back"),
+        InlineKeyboardButton(text="Help Music ❓", callback_data="source_"),
+    ],
+    [
         InlineKeyboardButton(
-            text="Support 💌", url=f"t.me/{SUPPORT_CHAT}"
-        ),
+            text="➗ Generate String ➗", callback_data="source_"),
     ],
     [
         InlineKeyboardButton(text=f"About {dispatcher.bot.first_name} 🤖", callback_data="cilik_"),
@@ -111,10 +113,10 @@ buttons = [
 HELP_STRINGS = """
 Click on the button bellow to get description about specifics command."""
 
-CILIK_IMG = "https://telegra.ph/file/a807460d64ac73c5dc83a.jpg"
+CILIK_IMG = "https://telegra.ph/file/ba582d379f2586f227d66.png"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
- You can support the project by contacting @greyyvbss \
+ You can support the project by contacting @kenapatagdar \
  Supporting isnt always financial! \
  Those who cannot provide monetary support are welcome to help us develop the bot at ."""
 
@@ -163,7 +165,7 @@ for module_name in ALL_MODULES:
     if hasattr(imported_module, "__user_settings__"):
         USER_SETTINGS[imported_module.__mod_name__.lower()] = imported_module
 
-
+        
 # do not async
 def send_help(chat_id, text, keyboard=None):
     if not keyboard:
@@ -436,14 +438,14 @@ def cilik_about_callback(update, context):
         )
     elif query.data == "cilik_support":
         query.message.edit_text(
-            text="*๏ cilik support chats*"
+            text="*๏ Somed support chats*"
             f"\nJoin My Support Group/Channel for see or report a problem on {dispatcher.bot.first_name}.",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Support", url="t.me/CilikSupport"),
-                    InlineKeyboardButton(text="Updates", url="https://t.me/CilikProject"),
+                    InlineKeyboardButton(text="Support", url="t.me/somedsupport"),
+                    InlineKeyboardButton(text="Updates", url="https://t.me/somedku"),
                  ],
                  [
                     InlineKeyboardButton(text="Go Back", callback_data="cilik_"),
@@ -461,6 +463,7 @@ def cilik_about_callback(update, context):
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
+                    InlineKeyboardButton(text="Grey", url="https://github.com/grey423"),
                  [
                     InlineKeyboardButton(text="sena-ex", url="https://github.com/kennedy-ex"),
                     InlineKeyboardButton(text="TheHamkerCat", url="https://github.com/TheHamkerCat"),
@@ -499,7 +502,6 @@ def Source_about_callback(update, context):
             "\n • `/resume` - To resuming the playback You've paused."
             "\n • `/skip` - To skipping the player."
             "\n • `/end` - For end the playback."
-            "\n • `/musicplayer <on/off>` - Toggle for turn ON or turn OFF the musicplayer."
             "\n\n๏ Command for all members."
             "\n • `/play` <query /reply audio> - Playing music via YouTube."
             "\n • `/playlist` - To playing a playlist of groups or your personal playlist",
@@ -508,7 +510,7 @@ def Source_about_callback(update, context):
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Go Back", callback_data="cilik_")
+                    InlineKeyboardButton(text="Go Back", callback_data="cilik_back")
                  ]
                 ]
             ),
