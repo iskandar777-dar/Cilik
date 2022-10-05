@@ -197,9 +197,9 @@ from telethon.errors import (
 )
 
 
-def sesi(_, msg):
+def sesi(_, msg, update, context):
 query = update.callback_query
-if query.data == "sstring":
+query.data == "sstring":
 query.message.edit_text(
 text=f"**Pilih String Yang Kamu mau :**"
 reply_markup=InlineKeyboardMarkup[
