@@ -211,7 +211,7 @@ def generate_session(update, context, context: CallbackContext, bot: Client, msg
             [
                 InlineKeyboardButton("ᴛᴇʟᴇᴛʜᴏɴ", callback_data="telethon"),
             ],
-        ]
+        ] )
 
         if telethon:
             ty = "ᴛᴇʟᴇᴛʜᴏɴ"
