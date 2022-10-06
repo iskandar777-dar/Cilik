@@ -231,7 +231,7 @@ def generate_session(update, context, context: CallbackContext, bot: Client, msg
         t = "ᴘᴀsᴛᴇ **ᴘʜᴏɴᴇ_ɴᴜᴍʙᴇʀ** ᴅᴇɴɢᴀɴ ᴋᴏᴅᴇ ɴᴇɢᴀʀᴀ. \nᴄᴏɴᴛᴏʜ : `+6287654321`'"
         phone_number_msg = bot.ask(user_id, t, filters=filters.text)
         msg.reply("ᴍᴇɴᴄᴏʙᴀ ᴍᴇɴɢɪʀɪᴍ ᴏᴛᴘ, ᴊᴀɴɢᴀɴ ʟᴜᴘᴀ ᴅɪᴘᴀsᴛᴇ ᴋᴀʟᴏ ᴜᴅᴀʜ ᴍᴀsᴜᴋ...")
-        elif telethon:
+        if telethon:
             client = TelegramClient(StringSession(), api_id, api_hash)
         else:
             client = Client(name="user", api_id=api_id, api_hash=api_hash, in_memory=True)
@@ -301,14 +301,14 @@ def generate_session(update, context, context: CallbackContext, bot: Client, msg
         client.disconnect()
         bot.send_message(msg.chat.id, "ʙᴇʀʜᴀsɪʟ ᴍᴇᴍʙᴜᴀᴛ {} sᴛʀɪɴɢ sᴇssɪᴏɴ.\n\nᴊᴀɴɢᴀɴ ʟᴜᴘᴀ ᴄᴇᴋ ᴘᴇsᴀɴ ᴛᴇʀsɪᴍᴘᴀɴ ᴀᴛᴀᴜ sᴀᴠᴇᴅ ᴍᴇssᴀɢᴇ ᴜɴᴛᴜᴋ ᴍᴇʟɪʜᴀᴛ sᴛʀɪɴɢ sᴇssɪᴏɴ! \n\n**sᴛʀɪɴɢ ɢᴇɴᴇʀᴀᴛᴏʀ ʙᴏᴛ ʙʏ** @kenapatagdar".format("ᴛᴇʟᴇᴛʜᴏɴ" if telethon else "ᴩʏʀᴏɢʀᴀᴍ"))
 
-elif query.data == "cancelled":
+if query.data == "cancelled":
     if "/cancel" in msg.text:
         msg.reply("**ᴍᴇᴍʙᴀᴛᴀʟᴋᴀɴ ᴘʀᴏsᴇs ᴘᴇᴍʙᴜᴀᴛᴀɴ sᴛʀɪɴɢ!**", quote=True, reply_markup=InlineKeyboardMarkup(Data.generate_button))
         return True
-    elif "/restart" in msg.text:
+    if "/restart" in msg.text:
         msg.reply("**sᴜᴋsᴇs ᴍᴇʀᴇsᴛᴀʀ ʙᴏᴛ!**", quote=True, reply_markup=InlineKeyboardMarkup(Data.generate_button))
         return True
-    elif msg.text.startswith("/"):  # Bot Commands
+    if msg.text.startswith("/"):  # Bot Commands
         msg.reply("**ᴍᴇᴍʙᴀᴛᴀʟᴋᴀɴ ᴘʀᴏsᴇs ʙᴇʀᴊᴀʟᴀɴ**", quote=True)
         return True
     else:
