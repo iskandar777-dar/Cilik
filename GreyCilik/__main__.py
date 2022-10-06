@@ -196,19 +196,20 @@ from telethon.errors import (
     PasswordHashInvalidError
 )
 
+#sesistring
+def generate_session(update, context, context: CallbackContext, bot: Client, msg: Message, msg, telethon=False, old_pyro: bool = False, is_bot: bool = False):
+    query = update.callback_query
+    if query.data == "sesi":
+    text=f"**Pilih String Yang Kamu mau :**"
+    reply_markup=InlineKeyboardMarkup[
+        [
+            InlineKeyboardButton("ᴩʏʀᴏɢʀᴀᴍ", callback_data="pyrogram"),
+        ],
+        [
+            InlineKeyboardButton("ᴛᴇʟᴇᴛʜᴏɴ", callback_data="telethon"),
+        ],
+    ]
 
-def sesi():
-text=f"**Pilih String Yang Kamu mau :**"
-reply_markup=InlineKeyboardMarkup[
-    [
-        InlineKeyboardButton("ᴩʏʀᴏɢʀᴀᴍ", callback_data="pyrogram"),
-    ],
-    [
-        InlineKeyboardButton("ᴛᴇʟᴇᴛʜᴏɴ", callback_data="telethon"),
-    ],
-]
-
-def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: bool = False, is_bot: bool = False):
     if telethon:
         ty = "ᴛᴇʟᴇᴛʜᴏɴ"
     else:
@@ -297,8 +298,7 @@ def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: bool =
     client.disconnect()
     bot.send_message(msg.chat.id, "ʙᴇʀʜᴀsɪʟ ᴍᴇᴍʙᴜᴀᴛ {} sᴛʀɪɴɢ sᴇssɪᴏɴ.\n\nᴊᴀɴɢᴀɴ ʟᴜᴘᴀ ᴄᴇᴋ ᴘᴇsᴀɴ ᴛᴇʀsɪᴍᴘᴀɴ ᴀᴛᴀᴜ sᴀᴠᴇᴅ ᴍᴇssᴀɢᴇ ᴜɴᴛᴜᴋ ᴍᴇʟɪʜᴀᴛ sᴛʀɪɴɢ sᴇssɪᴏɴ! \n\n**sᴛʀɪɴɢ ɢᴇɴᴇʀᴀᴛᴏʀ ʙᴏᴛ ʙʏ** @kenapatagdar".format("ᴛᴇʟᴇᴛʜᴏɴ" if telethon else "ᴩʏʀᴏɢʀᴀᴍ"))
 
-
-def cancelled(msg):
+elif query.data == "cancelled":
     if "/cancel" in msg.text:
         msg.reply("**ᴍᴇᴍʙᴀᴛᴀʟᴋᴀɴ ᴘʀᴏsᴇs ᴘᴇᴍʙᴜᴀᴛᴀɴ sᴛʀɪɴɢ!**", quote=True, reply_markup=InlineKeyboardMarkup(Data.generate_button))
         return True
