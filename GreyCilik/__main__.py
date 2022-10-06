@@ -197,8 +197,8 @@ from telethon.errors import (
 )
 
 #sesistring
-def generate_session(update, context, context: CallbackContext, bot: Client, msg: Message, msg, telethon=False, old_pyro: bool = False, is_bot: bool = False):
-    query = update.callback_query
+def generate_session(update, context, bot: Client, msg: Message, telethon=False):
+       query = update.callback_query
     if query.data == "sesi":
         query.message.edit_text(
         text=f"**๏ Pilih String Yang Kamu mau :**",
@@ -211,12 +211,13 @@ def generate_session(update, context, context: CallbackContext, bot: Client, msg
             [
                 InlineKeyboardButton("ᴛᴇʟᴇᴛʜᴏɴ", callback_data="telethon"),
             ],
-        ]
-
-        if telethon:
-            ty = "ᴛᴇʟᴇᴛʜᴏɴ"
-        else:
-            ty = "ᴩʏʀᴏɢʀᴀᴍ"
+        ] )
+    if query.data == "telethon":
+       query.message.edit_text(
+            ty = "ᴛᴇʟᴇᴛʜᴏɴ" )
+    if query.data == "pyrogram":
+         query.message.edit_text(
+            ty = "ᴩʏʀᴏɢʀᴀᴍ" )
         msg.reply(f"ᴍᴇɴᴄᴏʙᴀ ᴍᴇᴍᴜʟᴀɪ **{ty}** sᴇssɪᴏɴ ɢᴇɴᴇʀᴀᴛᴏʀ...")
         user_id = msg.chat.id
         api_id_msg = bot.ask(user_id, "ᴍᴇᴍᴘᴇʀᴏsᴇs sᴛʀɪɴɢ...\n\nᴘᴀsᴛᴇ **ᴀᴘɪ_ɪᴅ** ᴅɪʙᴀᴡᴀʜ.", filters=filters.text)
@@ -300,8 +301,9 @@ def generate_session(update, context, context: CallbackContext, bot: Client, msg
             pass
         client.disconnect()
         bot.send_message(msg.chat.id, "ʙᴇʀʜᴀsɪʟ ᴍᴇᴍʙᴜᴀᴛ {} sᴛʀɪɴɢ sᴇssɪᴏɴ.\n\nᴊᴀɴɢᴀɴ ʟᴜᴘᴀ ᴄᴇᴋ ᴘᴇsᴀɴ ᴛᴇʀsɪᴍᴘᴀɴ ᴀᴛᴀᴜ sᴀᴠᴇᴅ ᴍᴇssᴀɢᴇ ᴜɴᴛᴜᴋ ᴍᴇʟɪʜᴀᴛ sᴛʀɪɴɢ sᴇssɪᴏɴ! \n\n**sᴛʀɪɴɢ ɢᴇɴᴇʀᴀᴛᴏʀ ʙᴏᴛ ʙʏ** @kenapatagdar".format("ᴛᴇʟᴇᴛʜᴏɴ" if telethon else "ᴩʏʀᴏɢʀᴀᴍ")) 
-        )
- else query.data == "cancelled":
+        
+ if query.data == "cancelled":
+    query.message.edit_text(
     if "/cancel" in msg.text:
         msg.reply("**ᴍᴇᴍʙᴀᴛᴀʟᴋᴀɴ ᴘʀᴏsᴇs ᴘᴇᴍʙᴜᴀᴛᴀɴ sᴛʀɪɴɢ!**", quote=True, reply_markup=InlineKeyboardMarkup(Data.generate_button))
         return True
@@ -312,7 +314,7 @@ def generate_session(update, context, context: CallbackContext, bot: Client, msg
         msg.reply("**ᴍᴇᴍʙᴀᴛᴀʟᴋᴀɴ ᴘʀᴏsᴇs ʙᴇʀᴊᴀʟᴀɴ**", quote=True)
         return True
     else:
-        return False 
+        return False )
         
         
 # do not async
