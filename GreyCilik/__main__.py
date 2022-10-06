@@ -199,7 +199,7 @@ from telethon.errors import (
 #sesistring
 def generate_session(update, context, context: CallbackContext, bot: Client, msg: Message, msg, telethon=False, old_pyro: bool = False, is_bot: bool = False):
     query = update.callback_query
-    if query.data == "sesi":
+    query.data == "sesi":
         query.message.edit_text(
         text=f"**๏ Pilih String Yang Kamu mau :**",
         parse_mode=ParseMode.MARKDOWN,
@@ -301,7 +301,7 @@ def generate_session(update, context, context: CallbackContext, bot: Client, msg
         client.disconnect()
         bot.send_message(msg.chat.id, "ʙᴇʀʜᴀsɪʟ ᴍᴇᴍʙᴜᴀᴛ {} sᴛʀɪɴɢ sᴇssɪᴏɴ.\n\nᴊᴀɴɢᴀɴ ʟᴜᴘᴀ ᴄᴇᴋ ᴘᴇsᴀɴ ᴛᴇʀsɪᴍᴘᴀɴ ᴀᴛᴀᴜ sᴀᴠᴇᴅ ᴍᴇssᴀɢᴇ ᴜɴᴛᴜᴋ ᴍᴇʟɪʜᴀᴛ sᴛʀɪɴɢ sᴇssɪᴏɴ! \n\n**sᴛʀɪɴɢ ɢᴇɴᴇʀᴀᴛᴏʀ ʙᴏᴛ ʙʏ** @kenapatagdar".format("ᴛᴇʟᴇᴛʜᴏɴ" if telethon else "ᴩʏʀᴏɢʀᴀᴍ"))
 
-if query.data == "cancelled":
+ query.data == "cancelled":
     if "/cancel" in msg.text:
         msg.reply("**ᴍᴇᴍʙᴀᴛᴀʟᴋᴀɴ ᴘʀᴏsᴇs ᴘᴇᴍʙᴜᴀᴛᴀɴ sᴛʀɪɴɢ!**", quote=True, reply_markup=InlineKeyboardMarkup(Data.generate_button))
         return True
@@ -983,7 +983,7 @@ def main():
     )
     
     sesi_handler = CallbackQueryHandler(
-        sesi, generate_session, cancelled, run_async=True
+        sesi, generate_session, pattern=r"sesi", cancelled, run_async=True
     )
 
     donate_handler = CommandHandler("donate", donate, run_async=True)
