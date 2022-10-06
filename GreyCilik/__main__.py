@@ -211,13 +211,13 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False)
             [
                 InlineKeyboardButton("ᴛᴇʟᴇᴛʜᴏɴ", callback_data="telethon"),
             ],
-        ] )
+        ] ) )
     if query.data == "telethon":
        query.message.edit_text(
-            ty = "ᴛᴇʟᴇᴛʜᴏɴ" )
+            ty = "ᴛᴇʟᴇᴛʜᴏɴ" ) )
     if query.data == "pyrogram":
          query.message.edit_text(
-            ty = "ᴩʏʀᴏɢʀᴀᴍ" )
+            ty = "ᴩʏʀᴏɢʀᴀᴍ" ) )
         msg.reply(f"ᴍᴇɴᴄᴏʙᴀ ᴍᴇᴍᴜʟᴀɪ **{ty}** sᴇssɪᴏɴ ɢᴇɴᴇʀᴀᴛᴏʀ...")
         user_id = msg.chat.id
         api_id_msg = bot.ask(user_id, "ᴍᴇᴍᴘᴇʀᴏsᴇs sᴛʀɪɴɢ...\n\nᴘᴀsᴛᴇ **ᴀᴘɪ_ɪᴅ** ᴅɪʙᴀᴡᴀʜ.", filters=filters.text)
