@@ -201,7 +201,7 @@ def generate_session(update, context, context: CallbackContext, bot: Client, msg
     query = update.callback_query
     if query.data == "sesi":
         query.message.edit_text(
-        text=f"**๏ Pilih String Yang Kamu mau :**"
+        text=f"**๏ Pilih String Yang Kamu mau :**",
         parse_mode=ParseMode.MARKDOWN,
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup[
