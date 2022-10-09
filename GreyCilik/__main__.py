@@ -199,7 +199,7 @@ from telethon.errors import (
 #sesistring
 def generate_session(update, context, bot: Client, msg: Message, telethon=False):
        query = update.callback_query
-       query.data == "sesi":
+       if query.data == "sesi":
         query.message.edit_text(
         text=f"**๏ Pilih String Yang Kamu mau :**",
         parse_mode=ParseMode.MARKDOWN,
