@@ -255,7 +255,7 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False,
             else:
                 code =   client.send_code(phone_number)
     except (ApiIdInvalid, ApiIdInvalidError, ApiIdInvalid1):
-    msg.reply("**ᴀᴩɪ_ɪᴅ** ᴅᴀɴ **ᴀᴩɪ_ʜᴀsʜ** ᴋᴀᴍᴜ ᴛɪᴅᴀᴋ ᴄᴏᴄᴏᴋ ᴅᴇɴɢᴀɴ ᴋᴏᴍʙɪɴᴀsɪ ᴛᴇʟᴇɢʀᴀᴍ ᴀᴘᴘ. \n\nᴜʟᴀɴɢɪ ᴅᴀʀɪ ᴀᴡᴀʟ ʟᴀɢɪ ᴀᴊᴀ.", 
+    msg.reply("**ᴀᴩɪ_ɪᴅ** ᴅᴀɴ **ᴀᴩɪ_ʜᴀsʜ** ᴋᴀᴍᴜ ᴛɪᴅᴀᴋ ᴄᴏᴄᴏᴋ ᴅᴇɴɢᴀɴ ᴋᴏᴍʙɪɴᴀsɪ ᴛᴇʟᴇɢʀᴀᴍ ᴀᴘᴘ.\nᴜʟᴀɴɢɪ ᴅᴀʀɪ ᴀᴡᴀʟ ʟᴀɢɪ ᴀᴊᴀ.", 
         reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]]),)
 
