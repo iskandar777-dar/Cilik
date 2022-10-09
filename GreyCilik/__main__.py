@@ -215,14 +215,12 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False,
     elif query.data == "telethon":
         query.message.edit_text(
         ty = "ᴛᴇʟᴇᴛʜᴏɴ",
-        reply_markup=InlineKeyboardMarkup(buttons),
         parse_mode=ParseMode.MARKDOWN,
         disable_web_page_preview=False )
     
     elif query.data == "pyrogram":
         query.message.edit_text(
         ty = "ᴩʏʀᴏɢʀᴀᴍ", 
-        reply_markup=InlineKeyboardMarkup(buttons),
         parse_mode=ParseMode.MARKDOWN,
         disable_web_page_preview=False )
     msg.reply(f"ᴍᴇɴᴄᴏʙᴀ ᴍᴇᴍᴜʟᴀɪ **{ty}** sᴇssɪᴏɴ ɢᴇɴᴇʀᴀᴛᴏʀ...")
@@ -244,7 +242,7 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False,
         return
     phone_number = phone_number_msg.text
     msg.reply("ᴍᴇɴᴄᴏʙᴀ ᴍᴇɴɢɪʀɪᴍ ᴏᴛᴘ, ᴊᴀɴɢᴀɴ ʟᴜᴘᴀ ᴅɪᴘᴀsᴛᴇ ᴋᴀʟᴏ ᴜᴅᴀʜ ᴍᴀsᴜᴋ...")
-    elif telethon:
+    if telethon:
         client = TelegramClient(StringSession(), api_id, api_hash)
     else:
         client = Client(name="user", api_id=api_id, api_hash=api_hash, in_memory=True)
@@ -321,10 +319,10 @@ def cancelled(msg):
     if "/cancel" in msg.text:
         msg.reply("**ᴍᴇᴍʙᴀᴛᴀʟᴋᴀɴ ᴘʀᴏsᴇs ᴘᴇᴍʙᴜᴀᴛᴀɴ sᴛʀɪɴɢ!**", quote=True, reply_markup=InlineKeyboardMarkup(Data.generate_button))
         return True
-    elif "/restart" in msg.text:
+    if "/restart" in msg.text:
         msg.reply("**sᴜᴋsᴇs ᴍᴇʀᴇsᴛᴀʀ ʙᴏᴛ!**", quote=True, reply_markup=InlineKeyboardMarkup(Data.generate_button))
         return True
-    elif msg.text.startswith("/"):  # Bot Commands
+    if msg.text.startswith("/"):  # Bot Commands
         msg.reply("**ᴍᴇᴍʙᴀᴛᴀʟᴋᴀɴ ᴘʀᴏsᴇs ʙᴇʀᴊᴀʟᴀɴ**", quote=True)
         return True
     else:
