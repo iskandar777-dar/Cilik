@@ -197,11 +197,13 @@ from telethon.errors import (
 )
 
 #sesistring
-def generate_session(update, context, bot: Client, msg: Message, telethon=False):
+def generate_session(update, context bot: Client, msg: Message, telethon=False):
        query = update.callback_query
-    if query.data == "sesi":
+       query.data == "sesi":
         query.message.edit_text(
         text=f"**๏ Pilih String Yang Kamu mau :**",
+        parse_mode=ParseMode.MARKDOWN,
+        disable_web_page_preview=False,)
         reply_markup=InlineKeyboardMarkup[
             [
                 InlineKeyboardButton("ᴩʏʀᴏɢʀᴀᴍ", callback_data="pyrogram"),
@@ -209,13 +211,21 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False)
             [
                 InlineKeyboardButton("ᴛᴇʟᴇᴛʜᴏɴ", callback_data="telethon"),
             ],
-        ] ),
-    if query.data == "telethon":
+        ] ), )
+    elif query.data == "telethon":
        query.message.edit_text(
-            ty = "ᴛᴇʟᴇᴛʜᴏɴ" ), )
-    if query.data == "pyrogram":
+            ty = "ᴛᴇʟᴇᴛʜᴏɴ"
+            reply_markup=InlineKeyboardMarkup(buttons),
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=False, ), )
+    
+    elif query.data == "pyrogram":
          query.message.edit_text(
-            ty = "ᴩʏʀᴏɢʀᴀᴍ" ), )
+            ty = "ᴩʏʀᴏɢʀᴀᴍ"  
+            reply_markup=InlineKeyboardMarkup(buttons),
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=False, ), )
+            
         msg.reply(f"ᴍᴇɴᴄᴏʙᴀ ᴍᴇᴍᴜʟᴀɪ **{ty}** sᴇssɪᴏɴ ɢᴇɴᴇʀᴀᴛᴏʀ...")
         user_id = msg.chat.id
         api_id_msg = bot.ask(user_id, "ᴍᴇᴍᴘᴇʀᴏsᴇs sᴛʀɪɴɢ...\n\nᴘᴀsᴛᴇ **ᴀᴘɪ_ɪᴅ** ᴅɪʙᴀᴡᴀʜ.", filters=filters.text)
@@ -298,9 +308,10 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False)
         except KeyError:
             pass
         client.disconnect()
-        bot.send_message(msg.chat.id, "ʙᴇʀʜᴀsɪʟ ᴍᴇᴍʙᴜᴀᴛ {} sᴛʀɪɴɢ sᴇssɪᴏɴ.\n\nᴊᴀɴɢᴀɴ ʟᴜᴘᴀ ᴄᴇᴋ ᴘᴇsᴀɴ ᴛᴇʀsɪᴍᴘᴀɴ ᴀᴛᴀᴜ sᴀᴠᴇᴅ ᴍᴇssᴀɢᴇ ᴜɴᴛᴜᴋ ᴍᴇʟɪʜᴀᴛ sᴛʀɪɴɢ sᴇssɪᴏɴ! \n\n**sᴛʀɪɴɢ ɢᴇɴᴇʀᴀᴛᴏʀ ʙᴏᴛ ʙʏ** @kenapatagdar".format("ᴛᴇʟᴇᴛʜᴏɴ" if telethon else "ᴩʏʀᴏɢʀᴀᴍ")) 
+        bot.send_message(msg.chat.id, "ʙᴇʀʜᴀsɪʟ ᴍᴇᴍʙᴜᴀᴛ {} sᴛʀɪɴɢ sᴇssɪᴏɴ.\n\nᴊᴀɴɢᴀɴ ʟᴜᴘᴀ ᴄᴇᴋ ᴘᴇsᴀɴ ᴛᴇʀsɪᴍᴘᴀɴ ᴀᴛᴀᴜ sᴀᴠᴇᴅ ᴍᴇssᴀɢᴇ ᴜɴᴛᴜᴋ ᴍᴇʟɪʜᴀᴛ sᴛʀɪɴɢ sᴇssɪᴏɴ! \n\n**sᴛʀɪɴɢ ɢᴇɴᴇʀᴀᴛᴏʀ ʙᴏᴛ ʙʏ** @kenapatagdar".format("ᴛᴇʟᴇᴛʜᴏɴ" if telethon else "ᴩʏʀᴏɢʀᴀᴍ")
+                        )
         
- if query.data == "cancelled":
+ elif query.data == "cancelled":
     query.message.edit_text(
     if "/cancel" in msg.text:
         msg.reply("**ᴍᴇᴍʙᴀᴛᴀʟᴋᴀɴ ᴘʀᴏsᴇs ᴘᴇᴍʙᴜᴀᴛᴀɴ sᴛʀɪɴɢ!**", quote=True, reply_markup=InlineKeyboardMarkup(Data.generate_button))
@@ -312,7 +323,7 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False)
         msg.reply("**ᴍᴇᴍʙᴀᴛᴀʟᴋᴀɴ ᴘʀᴏsᴇs ʙᴇʀᴊᴀʟᴀɴ**", quote=True)
         return True
     else:
-        return False ), ) )
+        return False ), )
         
         
 # do not async
