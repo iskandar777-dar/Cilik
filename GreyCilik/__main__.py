@@ -200,11 +200,11 @@ from telethon.errors import (
 def generate_session(update, context, bot: Client, msg: Message, telethon=False):
 		query = update.callback_query
 		if query.data == "sesi":
-		query.message.edit_text(
-		text=f"**๏ Pilih String Yang Kamu mau :**",
-		parse_mode=ParseMode.MARKDOWN,
-		disable_web_page_preview=False,)
-		reply_markup=InlineKeyboardMarkup[
+			query.message.edit_text(
+			text=f"**๏ Pilih String Yang Kamu mau :**",
+			parse_mode=ParseMode.MARKDOWN,
+			disable_web_page_preview=False,)
+			reply_markup=InlineKeyboardMarkup[
 			[
 				InlineKeyboardButton("ᴩʏʀᴏɢʀᴀᴍ", callback_data="pyrogram"),
 			],
