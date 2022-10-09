@@ -233,7 +233,7 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False,
     except ValueError:
         api_id_msg.reply("**ᴀᴘɪ_ɪᴅ** ʜᴀʀᴜs ʙᴇʀᴜᴘᴀ ᴀɴɢᴋᴀ, ᴍᴇᴍᴜʟᴀɪ ᴜʟᴀɴɢ ᴍᴇᴍʙᴜᴀᴛ sᴛʀɪɴɢ.", quote=True, reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]])
-        return
+
     api_hash_msg =   bot.ask(user_id, "ᴘᴀsᴛᴇ **ᴀᴘɪ_ʜᴀsʜ** ᴅɪʙᴀᴡᴀʜ", filters=filters.text)
     if   cancelled(api_hash_msg):
         return
@@ -259,12 +259,12 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False,
     msg.reply("**ᴀᴩɪ_ɪᴅ** ᴅᴀɴ **ᴀᴩɪ_ʜᴀsʜ** ᴋᴀᴍᴜ ᴛɪᴅᴀᴋ ᴄᴏᴄᴏᴋ ᴅᴇɴɢᴀɴ ᴋᴏᴍʙɪɴᴀsɪ ᴛᴇʟᴇɢʀᴀᴍ ᴀᴘᴘ. \n\nᴜʟᴀɴɢɪ ᴅᴀʀɪ ᴀᴡᴀʟ ʟᴀɢɪ ᴀᴊᴀ.", 
         reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]])
-        return
+
     except (PhoneNumberInvalid, PhoneNumberInvalidError, PhoneNumberInvalid1):
     msg.reply("ɴᴏᴍᴏʀ **ᴩʜᴏɴᴇ_ɴᴜᴍʙᴇʀ** ᴛɪᴅᴀᴋ ᴛᴇʀᴅᴀꜰᴛᴀʀ ᴅɪᴛᴇʟᴇɢʀᴀᴍ.\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴄᴏʙᴀ.", 
         reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]])
-        return
+
     try:
         phone_code_msg = None
         if not is_bot:
@@ -274,7 +274,7 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False,
     except TimeoutError:
     msg.reply("ᴡᴀᴋᴛᴜ ʜᴀʙɪs.\n\nᴜʟᴀɴɢ ᴋᴇᴍʙᴀʟɪ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]])
-        return
+
     if not is_bot:
         phone_code = phone_code_msg.text.replace(" ", "")
         try:
@@ -285,18 +285,18 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False,
         except (PhoneCodeInvalid, PhoneCodeInvalidError, PhoneCodeInvalid1):
                 msg.reply("ᴏᴛᴘ **sᴀʟᴀʜ.**\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]])
-            return
+
         except (PhoneCodeExpired, PhoneCodeExpiredError, PhoneCodeExpired1):
                 msg.reply("ᴏᴛᴘ **ᴋᴀᴅᴀʟᴜᴀʀsᴀ**\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]])
-            return
+
         except (SessionPasswordNeeded, SessionPasswordNeededError, SessionPasswordNeeded1):
             try:
                 two_step_msg =   bot.ask(user_id, "ᴘᴀsᴛᴇ **ᴠᴇʀɪꜰɪᴋᴀsɪ ᴅᴜᴀ ʟᴀɴɢᴋᴀʜ** ᴩᴀssᴡᴏʀᴅ ᴅɪʙᴀᴡᴀʜ.", filters=filters.text, timeout=300)
             except TimeoutError:
                 msg.reply("ᴡᴀᴋᴛᴜ ʜᴀʙɪs.\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]])
-                return
+
             try:
                 password = two_step_msg.text
                 if telethon:
@@ -308,7 +308,7 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False,
             except (PasswordHashInvalid, PasswordHashInvalidError, PasswordHashInvalid1):
                 two_step_msg.reply("ᴩᴀssᴡᴏʀᴅ ᴅɪʙᴀᴡᴀʜ.\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", quote=True, reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]]))
-                return
+
     if telethon:
         string_session = client.session.save()
     else:
@@ -329,11 +329,11 @@ def cancelled(msg):
     if "/cancel" in msg.text:
         msg.reply("**ᴍᴇᴍʙᴀᴛᴀʟᴋᴀɴ ᴘʀᴏsᴇs ᴘᴇᴍʙᴜᴀᴛᴀɴ sᴛʀɪɴɢ!**", quote=True, reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]])
-        return True
+
     if "/restart" in msg.text:
         msg.reply("**sᴜᴋsᴇs ᴍᴇʀᴇsᴛᴀʀ ʙᴏᴛ!**", quote=True, reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]])
-        return True
+
     if msg.text.startswith("/"):  # Bot Commands
         msg.reply("**ᴍᴇᴍʙᴀᴛᴀʟᴋᴀɴ ᴘʀᴏsᴇs ʙᴇʀᴊᴀʟᴀɴ**", quote=True)
         return True
