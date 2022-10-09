@@ -213,14 +213,14 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False)
 			],
 		]
 		elif query.data == "telethon":
-		query.message.edit_text(
+			query.message.edit_text(
 			ty = "ᴛᴇʟᴇᴛʜᴏɴ"
 			reply_markup=InlineKeyboardMarkup(buttons),
 			parse_mode=ParseMode.MARKDOWN,
 			disable_web_page_preview=False )
 	
 		elif query.data == "pyrogram":
-		query.message.edit_text(
+			query.message.edit_text(
 			ty = "ᴩʏʀᴏɢʀᴀᴍ"  
 			reply_markup=InlineKeyboardMarkup(buttons),
 			parse_mode=ParseMode.MARKDOWN,
