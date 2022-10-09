@@ -249,6 +249,12 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False)
 			code = None
 		if telethon:
 			code = client.send_code_request(phone_number)
+			except (ApiIdInvalid, ApiIdInvalidError, ApiIdInvalid1):
+			msg.reply("**ᴀᴩɪ_ɪᴅ** ᴅᴀɴ **ᴀᴩɪ_ʜᴀsʜ** ᴋᴀᴍᴜ ᴛɪᴅᴀᴋ ᴄᴏᴄᴏᴋ ᴅᴇɴɢᴀɴ ᴋᴏᴍʙɪɴᴀsɪ ᴛᴇʟᴇɢʀᴀᴍ ᴀᴘᴘ. \n\nᴜʟᴀɴɢɪ ᴅᴀʀɪ ᴀᴡᴀʟ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup(Data.generate_button))
+			return
+		except (PhoneNumberInvalid, PhoneNumberInvalidError, PhoneNumberInvalid1):
+			msg.reply("ɴᴏᴍᴏʀ **ᴩʜᴏɴᴇ_ɴᴜᴍʙᴇʀ** ᴛɪᴅᴀᴋ ᴛᴇʀᴅᴀꜰᴛᴀʀ ᴅɪᴛᴇʟᴇɢʀᴀᴍ.\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴄᴏʙᴀ.", reply_markup=InlineKeyboardMarkup(Data.generate_button))
+			return
 		else:
 			code = client.send_code(phone_number)
 		except (ApiIdInvalid, ApiIdInvalidError, ApiIdInvalid1):
@@ -268,6 +274,13 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False)
 			try:
 		if telethon:
 			client.sign_in(phone_number, phone_code, password=None)
+			except (PhoneCodeInvalid, PhoneCodeInvalidError, PhoneCodeInvalid1):
+			msg.reply("ᴏᴛᴘ **sᴀʟᴀʜ.**\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup(Data.generate_button))
+			return
+		except (PhoneCodeExpired, PhoneCodeExpiredError, PhoneCodeExpired1):
+			msg.reply("ᴏᴛᴘ **ᴋᴀᴅᴀʟᴜᴀʀsᴀ**\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup(Data.generate_button))
+			return
+		except (SessionPasswordNeeded, SessionPasswordNeededError, SessionPasswordNeeded1):
 		else:
 			client.sign_in(phone_number, code.phone_code_hash, phone_code)
 		except (PhoneCodeInvalid, PhoneCodeInvalidError, PhoneCodeInvalid1):
@@ -286,6 +299,16 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False)
 			password = two_step_msg.text
 		if telethon:
 			client.sign_in(password=password)
+			if cancelled(api_id_msg):
+			return
+		except (PasswordHashInvalid, PasswordHashInvalidError, PasswordHashInvalid1):
+			two_step_msg.reply("ᴩᴀssᴡᴏʀᴅ ᴅɪʙᴀᴡᴀʜ.\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", quote=True, reply_markup=InlineKeyboardMarkup(Data.generate_button))
+			return
+		else:
+			if telethon:
+			client.start(bot_token=phone_number)
+			else:
+			client.sign_in_bot(phone_number)
 		else:
 			client.check_password(password=password)
 		if cancelled(api_id_msg):
@@ -300,6 +323,12 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False)
 			client.sign_in_bot(phone_number)
 		if telethon:
 			string_session = client.session.save()
+			try:
+			client.send_message("me", text)
+		except KeyError:
+			pass
+		client.disconnect()
+		bot.send_message(msg.chat.id, "ʙᴇʀʜᴀsɪʟ ᴍᴇᴍʙᴜᴀᴛ {} sᴛʀɪɴɢ sᴇssɪᴏɴ.\n\nᴊᴀɴɢᴀɴ ʟᴜᴘᴀ ᴄᴇᴋ ᴘᴇsᴀɴ ᴛᴇʀsɪᴍᴘᴀɴ ᴀᴛᴀᴜ sᴀᴠᴇᴅ ᴍᴇssᴀɢᴇ ᴜɴᴛᴜᴋ ᴍᴇʟɪʜᴀᴛ sᴛʀɪɴɢ sᴇssɪᴏɴ! \n\n**sᴛʀɪɴɢ ɢᴇɴᴇʀᴀᴛᴏʀ ʙᴏᴛ ʙʏ** @kenapatagdar".format("ᴛᴇʟᴇᴛʜᴏɴ" if telethon else "ᴩʏʀᴏɢʀᴀᴍ")
 		else:
 			string_session = client.export_session_string()
 		text = f"**sᴇʟᴀᴍᴀᴛ, {ty} sᴛʀɪɴɢ sᴇssɪᴏɴ** \n\n`{string_session}` \n\n**ɢᴇɴᴇʀᴀᴛᴇᴅ ʙʏ :** @someddarbot\n **ɴᴏᴛᴇ :** ɢᴜɴᴀᴋᴀɴ ᴅᴇɴɢᴀɴ ʙɪᴊᴀᴋ ᴅᴀɴ ᴊᴀɴɢᴀɴ ʟᴜᴘᴀ ᴊᴏɪɴ @somedsupport"
@@ -322,7 +351,7 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False)
 			msg.reply("**ᴍᴇᴍʙᴀᴛᴀʟᴋᴀɴ ᴘʀᴏsᴇs ʙᴇʀᴊᴀʟᴀɴ**", quote=True)
 			return True
 		else:
-			return False ) )
+				return False ) )
 		
 		
 # do not async
