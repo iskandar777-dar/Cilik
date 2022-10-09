@@ -249,7 +249,7 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False)
 			code = None
 		if telethon:
 			code = client.send_code_request(phone_number)
-			except (ApiIdInvalid, ApiIdInvalidError, ApiIdInvalid1):
+		except (ApiIdInvalid, ApiIdInvalidError, ApiIdInvalid1):
 			msg.reply("**ᴀᴩɪ_ɪᴅ** ᴅᴀɴ **ᴀᴩɪ_ʜᴀsʜ** ᴋᴀᴍᴜ ᴛɪᴅᴀᴋ ᴄᴏᴄᴏᴋ ᴅᴇɴɢᴀɴ ᴋᴏᴍʙɪɴᴀsɪ ᴛᴇʟᴇɢʀᴀᴍ ᴀᴘᴘ. \n\nᴜʟᴀɴɢɪ ᴅᴀʀɪ ᴀᴡᴀʟ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup(Data.generate_button))
 			return
 		except (PhoneNumberInvalid, PhoneNumberInvalidError, PhoneNumberInvalid1):
