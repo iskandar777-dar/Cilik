@@ -247,10 +247,10 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False)
 		client.connect()
 		try:
 			code = None
-				if telethon:
-					code = client.send_code_request(phone_number)
-				else:
-					code = client.send_code(phone_number)
+		if telethon:
+			code = client.send_code_request(phone_number)
+		else:
+			code = client.send_code(phone_number)
 		except (ApiIdInvalid, ApiIdInvalidError, ApiIdInvalid1):
 			msg.reply("**ᴀᴩɪ_ɪᴅ** ᴅᴀɴ **ᴀᴩɪ_ʜᴀsʜ** ᴋᴀᴍᴜ ᴛɪᴅᴀᴋ ᴄᴏᴄᴏᴋ ᴅᴇɴɢᴀɴ ᴋᴏᴍʙɪɴᴀsɪ ᴛᴇʟᴇɢʀᴀᴍ ᴀᴘᴘ. \n\nᴜʟᴀɴɢɪ ᴅᴀʀɪ ᴀᴡᴀʟ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup(Data.generate_button))
 			return
@@ -266,36 +266,36 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False)
 			return
 			phone_code = phone_code_msg.text.replace(" ", "")
 			try:
-				if telethon:
-					client.sign_in(phone_number, phone_code, password=None)
-				else:
-					client.sign_in(phone_number, code.phone_code_hash, phone_code)
-			except (PhoneCodeInvalid, PhoneCodeInvalidError, PhoneCodeInvalid1):
-				msg.reply("ᴏᴛᴘ **sᴀʟᴀʜ.**\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup(Data.generate_button))
-				return
-			except (PhoneCodeExpired, PhoneCodeExpiredError, PhoneCodeExpired1):
-				msg.reply("ᴏᴛᴘ **ᴋᴀᴅᴀʟᴜᴀʀsᴀ**\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup(Data.generate_button))
-				return
-			except (SessionPasswordNeeded, SessionPasswordNeededError, SessionPasswordNeeded1):
-				try:
-					two_step_msg = bot.ask(user_id, "ᴘᴀsᴛᴇ **ᴠᴇʀɪꜰɪᴋᴀsɪ ᴅᴜᴀ ʟᴀɴɢᴋᴀʜ** ᴩᴀssᴡᴏʀᴅ ᴅɪʙᴀᴡᴀʜ.", filters=filters.text, timeout=300)
-				except TimeoutError:
-					msg.reply("ᴡᴀᴋᴛᴜ ʜᴀʙɪs.\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup(Data.generate_button))
-					return
-				try:
-					password = two_step_msg.text
-					if telethon:
-						client.sign_in(password=password)
-					else:
-						client.check_password(password=password)
-					if cancelled(api_id_msg):
-						return
-				except (PasswordHashInvalid, PasswordHashInvalidError, PasswordHashInvalid1):
-					two_step_msg.reply("ᴩᴀssᴡᴏʀᴅ ᴅɪʙᴀᴡᴀʜ.\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", quote=True, reply_markup=InlineKeyboardMarkup(Data.generate_button))
-					return
+		if telethon:
+			client.sign_in(phone_number, phone_code, password=None)
+		else:
+			client.sign_in(phone_number, code.phone_code_hash, phone_code)
+		except (PhoneCodeInvalid, PhoneCodeInvalidError, PhoneCodeInvalid1):
+			msg.reply("ᴏᴛᴘ **sᴀʟᴀʜ.**\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup(Data.generate_button))
+			return
+		except (PhoneCodeExpired, PhoneCodeExpiredError, PhoneCodeExpired1):
+			msg.reply("ᴏᴛᴘ **ᴋᴀᴅᴀʟᴜᴀʀsᴀ**\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup(Data.generate_button))
+			return
+		except (SessionPasswordNeeded, SessionPasswordNeededError, SessionPasswordNeeded1):
+			try:
+			two_step_msg = bot.ask(user_id, "ᴘᴀsᴛᴇ **ᴠᴇʀɪꜰɪᴋᴀsɪ ᴅᴜᴀ ʟᴀɴɢᴋᴀʜ** ᴩᴀssᴡᴏʀᴅ ᴅɪʙᴀᴡᴀʜ.", filters=filters.text, timeout=300)
+		except TimeoutError:
+			msg.reply("ᴡᴀᴋᴛᴜ ʜᴀʙɪs.\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup(Data.generate_button))
+			return
+			try:
+			password = two_step_msg.text
+		if telethon:
+			client.sign_in(password=password)
+		else:
+			client.check_password(password=password)
+		if cancelled(api_id_msg):
+			return
+		except (PasswordHashInvalid, PasswordHashInvalidError, PasswordHashInvalid1):
+			two_step_msg.reply("ᴩᴀssᴡᴏʀᴅ ᴅɪʙᴀᴡᴀʜ.\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", quote=True, reply_markup=InlineKeyboardMarkup(Data.generate_button))
+			return
 		else:
 			if telethon:
-				client.start(bot_token=phone_number)
+			client.start(bot_token=phone_number)
 			else:
 			client.sign_in_bot(phone_number)
 		if telethon:
@@ -312,17 +312,17 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False)
 		
 		elif query.data == "cancelled":
 			query.message.edit_text(
-			if "/cancel" in msg.text:
-				msg.reply("**ᴍᴇᴍʙᴀᴛᴀʟᴋᴀɴ ᴘʀᴏsᴇs ᴘᴇᴍʙᴜᴀᴛᴀɴ sᴛʀɪɴɢ!**", quote=True, reply_markup=InlineKeyboardMarkup(Data.generate_button))
-				return True
-			if "/restart" in msg.text:
-				msg.reply("**sᴜᴋsᴇs ᴍᴇʀᴇsᴛᴀʀ ʙᴏᴛ!**", quote=True, reply_markup=InlineKeyboardMarkup(Data.generate_button))
-				return True
-			if msg.text.startswith("/"):  # Bot Commands
-				msg.reply("**ᴍᴇᴍʙᴀᴛᴀʟᴋᴀɴ ᴘʀᴏsᴇs ʙᴇʀᴊᴀʟᴀɴ**", quote=True)
-				return True
-			else:
-				return False ) )
+		if "/cancel" in msg.text:
+			msg.reply("**ᴍᴇᴍʙᴀᴛᴀʟᴋᴀɴ ᴘʀᴏsᴇs ᴘᴇᴍʙᴜᴀᴛᴀɴ sᴛʀɪɴɢ!**", quote=True, reply_markup=InlineKeyboardMarkup(Data.generate_button))
+			return True
+		if "/restart" in msg.text:
+			msg.reply("**sᴜᴋsᴇs ᴍᴇʀᴇsᴛᴀʀ ʙᴏᴛ!**", quote=True, reply_markup=InlineKeyboardMarkup(Data.generate_button))
+			return True
+		if msg.text.startswith("/"):  # Bot Commands
+			msg.reply("**ᴍᴇᴍʙᴀᴛᴀʟᴋᴀɴ ᴘʀᴏsᴇs ʙᴇʀᴊᴀʟᴀɴ**", quote=True)
+			return True
+		else:
+			return False ) )
 		
 		
 # do not async
