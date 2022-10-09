@@ -202,8 +202,6 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False)
     if query.data == "sesi":
         query.message.edit_text(
         text=f"**๏ Pilih String Yang Kamu mau :**",
-        parse_mode=ParseMode.MARKDOWN,
-        disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup[
             [
                 InlineKeyboardButton("ᴩʏʀᴏɢʀᴀᴍ", callback_data="pyrogram"),
@@ -211,7 +209,7 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False)
             [
                 InlineKeyboardButton("ᴛᴇʟᴇᴛʜᴏɴ", callback_data="telethon"),
             ],
-        ] ), )
+        ] ),
     if query.data == "telethon":
        query.message.edit_text(
             ty = "ᴛᴇʟᴇᴛʜᴏɴ" ), )
@@ -314,7 +312,7 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False)
         msg.reply("**ᴍᴇᴍʙᴀᴛᴀʟᴋᴀɴ ᴘʀᴏsᴇs ʙᴇʀᴊᴀʟᴀɴ**", quote=True)
         return True
     else:
-        return False )
+        return False ), ) )
         
         
 # do not async
