@@ -211,7 +211,7 @@ def generate_session(update, context bot: Client, msg: Message, telethon=False):
             [
                 InlineKeyboardButton("ᴛᴇʟᴇᴛʜᴏɴ", callback_data="telethon"),
             ],
-        ] )
+        ]
     elif query.data == "telethon":
        query.message.edit_text(
             ty = "ᴛᴇʟᴇᴛʜᴏɴ"
@@ -322,7 +322,7 @@ def generate_session(update, context bot: Client, msg: Message, telethon=False):
         msg.reply("**ᴍᴇᴍʙᴀᴛᴀʟᴋᴀɴ ᴘʀᴏsᴇs ʙᴇʀᴊᴀʟᴀɴ**", quote=True)
         return True
     else:
-        return False )
+        return False ) )
         
         
 # do not async
