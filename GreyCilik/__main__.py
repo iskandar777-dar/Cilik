@@ -239,7 +239,7 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False,
     if   cancelled(api_hash_msg):
         return
     api_hash = api_hash_msg.text
-        t = "ᴘᴀsᴛᴇ **ᴘʜᴏɴᴇ_ɴᴜᴍʙᴇʀ** ᴅᴇɴɢᴀɴ ᴋᴏᴅᴇ ɴᴇɢᴀʀᴀ. \nᴄᴏɴᴛᴏʜ : `+6287654321`'"
+    t = "ᴘᴀsᴛᴇ **ᴘʜᴏɴᴇ_ɴᴜᴍʙᴇʀ** ᴅᴇɴɢᴀɴ ᴋᴏᴅᴇ ɴᴇɢᴀʀᴀ. \nᴄᴏɴᴛᴏʜ : `+6287654321`'"
     if   cancelled(phone_number_msg):
         return
     phone_number = phone_number_msg.text
