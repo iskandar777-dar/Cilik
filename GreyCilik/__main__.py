@@ -211,20 +211,20 @@ def generate_session(update, context bot: Client, msg: Message, telethon=False):
             [
                 InlineKeyboardButton("ᴛᴇʟᴇᴛʜᴏɴ", callback_data="telethon"),
             ],
-        ] ), )
+        ] )
     elif query.data == "telethon":
        query.message.edit_text(
             ty = "ᴛᴇʟᴇᴛʜᴏɴ"
             reply_markup=InlineKeyboardMarkup(buttons),
             parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=False, ), )
+            disable_web_page_preview=False )
     
     elif query.data == "pyrogram":
          query.message.edit_text(
             ty = "ᴩʏʀᴏɢʀᴀᴍ"  
             reply_markup=InlineKeyboardMarkup(buttons),
             parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=False, ), )
+            disable_web_page_preview=False )
             
         msg.reply(f"ᴍᴇɴᴄᴏʙᴀ ᴍᴇᴍᴜʟᴀɪ **{ty}** sᴇssɪᴏɴ ɢᴇɴᴇʀᴀᴛᴏʀ...")
         user_id = msg.chat.id
@@ -309,7 +309,6 @@ def generate_session(update, context bot: Client, msg: Message, telethon=False):
             pass
         client.disconnect()
         bot.send_message(msg.chat.id, "ʙᴇʀʜᴀsɪʟ ᴍᴇᴍʙᴜᴀᴛ {} sᴛʀɪɴɢ sᴇssɪᴏɴ.\n\nᴊᴀɴɢᴀɴ ʟᴜᴘᴀ ᴄᴇᴋ ᴘᴇsᴀɴ ᴛᴇʀsɪᴍᴘᴀɴ ᴀᴛᴀᴜ sᴀᴠᴇᴅ ᴍᴇssᴀɢᴇ ᴜɴᴛᴜᴋ ᴍᴇʟɪʜᴀᴛ sᴛʀɪɴɢ sᴇssɪᴏɴ! \n\n**sᴛʀɪɴɢ ɢᴇɴᴇʀᴀᴛᴏʀ ʙᴏᴛ ʙʏ** @kenapatagdar".format("ᴛᴇʟᴇᴛʜᴏɴ" if telethon else "ᴩʏʀᴏɢʀᴀᴍ")
-                        )
         
  elif query.data == "cancelled":
     query.message.edit_text(
@@ -323,7 +322,7 @@ def generate_session(update, context bot: Client, msg: Message, telethon=False):
         msg.reply("**ᴍᴇᴍʙᴀᴛᴀʟᴋᴀɴ ᴘʀᴏsᴇs ʙᴇʀᴊᴀʟᴀɴ**", quote=True)
         return True
     else:
-        return False ), )
+        return False )
         
         
 # do not async
