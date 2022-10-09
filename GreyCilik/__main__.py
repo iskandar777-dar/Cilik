@@ -197,7 +197,7 @@ from telethon.errors import (
 )
 
 #sesistring
-def generate_session(update, context bot: Client, msg: Message, telethon=False):
+def generate_session(update, context, bot: Client, msg: Message, telethon=False):
        query = update.callback_query
        query.data == "sesi":
         query.message.edit_text(
