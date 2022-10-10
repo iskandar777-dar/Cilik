@@ -264,7 +264,7 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False,
             if   cancelled(phone_code_msg):
                 return
     except TimeoutError: msg.reply("ᴡᴀᴋᴛᴜ ʜᴀʙɪs.\n\nᴜʟᴀɴɢ ᴋᴇᴍʙᴀʟɪ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),
-        phone_code = phone_code_msg.text.replace(" ", "")
+        phone_code = phone_code_msg.text.replace(" ", ""),
     client.connect()
     try:
     if telethon:
