@@ -279,6 +279,7 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False,
     try:
         two_step_msg =   bot.ask(user_id, "ᴘᴀsᴛᴇ **ᴠᴇʀɪꜰɪᴋᴀsɪ ᴅᴜᴀ ʟᴀɴɢᴋᴀʜ** ᴩᴀssᴡᴏʀᴅ ᴅɪʙᴀᴡᴀʜ.", filters=filters.text, timeout=300)
     except TimeoutError: msg.reply("ᴡᴀᴋᴛᴜ ʜᴀʙɪs.\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),
+    
     try:
         password = two_step_msg.text
         if telethon:
@@ -296,6 +297,7 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False,
         string_session =   client.export_session_string()
     text = f"**sᴇʟᴀᴍᴀᴛ, {ty} sᴛʀɪɴɢ sᴇssɪᴏɴ** \n\n`{string_session}` \n\n**ɢᴇɴᴇʀᴀᴛᴇᴅ ʙʏ :** @someddarbot\n **ɴᴏᴛᴇ :** ɢᴜɴᴀᴋᴀɴ ᴅᴇɴɢᴀɴ ʙɪᴊᴀᴋ ᴅᴀɴ ᴊᴀɴɢᴀɴ ʟᴜᴘᴀ ᴊᴏɪɴ @somedsupport"
     client.connect()
+    
     try:
         if not is_bot:
             client.send_message("me", text)
