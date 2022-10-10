@@ -268,10 +268,10 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False,
     if not is_bot:
         phone_code = phone_code_msg.text.replace(" ", ""),
     try:
-    if telethon:
-        client.sign_in(phone_number, phone_code, password=None)
-            else:
-        client.sign_in(phone_number, code.phone_code_hash, phone_code)
+        if telethon:
+            client.sign_in(phone_number, phone_code, password=None)
+                else:
+            client.sign_in(phone_number, code.phone_code_hash, phone_code)
     except (PhoneCodeInvalid, PhoneCodeInvalidError, PhoneCodeInvalid1): msg.reply("ᴏᴛᴘ **sᴀʟᴀʜ.**\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),
 
     except (PhoneCodeExpired, PhoneCodeExpiredError, PhoneCodeExpired1): msg.reply("ᴏᴛᴘ **ᴋᴀᴅᴀʟᴜᴀʀsᴀ**\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),
