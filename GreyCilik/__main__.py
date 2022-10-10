@@ -253,12 +253,11 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False,
                 code =   client.send_code_request(phone_number)
             else:
                 code =   client.send_code(phone_number)
-    except (ApiIdInvalid, ApiIdInvalidError, ApiIdInvalid1):
-    msg.reply("**ᴀᴩɪ_ɪᴅ** ᴅᴀɴ **ᴀᴩɪ_ʜᴀsʜ** ᴋᴀᴍᴜ ᴛɪᴅᴀᴋ ᴄᴏᴄᴏᴋ ᴅᴇɴɢᴀɴ ᴋᴏᴍʙɪɴᴀsɪ ᴛᴇʟᴇɢʀᴀᴍ ᴀᴘᴘ, \nᴜʟᴀɴɢɪ ᴅᴀʀɪ ᴀᴡᴀʟ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),
-
+    except (ApiIdInvalid, ApiIdInvalidError, ApiIdInvalid1): msg.reply("**ᴀᴩɪ_ɪᴅ** ᴅᴀɴ **ᴀᴩɪ_ʜᴀsʜ** ᴋᴀᴍᴜ ᴛɪᴅᴀᴋ ᴄᴏᴄᴏᴋ ᴅᴇɴɢᴀɴ ᴋᴏᴍʙɪɴᴀsɪ ᴛᴇʟᴇɢʀᴀᴍ ᴀᴘᴘ, \nᴜʟᴀɴɢɪ ᴅᴀʀɪ ᴀᴡᴀʟ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),)
+        return
     except (PhoneNumberInvalid, PhoneNumberInvalidError, PhoneNumberInvalid1):
-    msg.reply("ɴᴏᴍᴏʀ **ᴩʜᴏɴᴇ_ɴᴜᴍʙᴇʀ** ᴛɪᴅᴀᴋ ᴛᴇʀᴅᴀꜰᴛᴀʀ ᴅɪᴛᴇʟᴇɢʀᴀᴍ.\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴄᴏʙᴀ.", reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),
-    
+    msg.reply("ɴᴏᴍᴏʀ **ᴩʜᴏɴᴇ_ɴᴜᴍʙᴇʀ** ᴛɪᴅᴀᴋ ᴛᴇʀᴅᴀꜰᴛᴀʀ ᴅɪᴛᴇʟᴇɢʀᴀᴍ.\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴄᴏʙᴀ.", reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),)
+        return
     try:
         phone_code_msg = None
         if not is_bot:
