@@ -282,7 +282,7 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False,
         password = two_step_msg.text
         if telethon:
             client.sign_in(password=password)
-            else:
+        else:
             client.check_password(password=password)
         if   cancelled(api_id_msg):
             return
