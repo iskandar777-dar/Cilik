@@ -266,7 +266,7 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False,
     except TimeoutError: msg.reply("ᴡᴀᴋᴛᴜ ʜᴀʙɪs.\n\nᴜʟᴀɴɢ ᴋᴇᴍʙᴀʟɪ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),)
     
     if not is_bot:
-        phone_code = phone_code_msg.text.replace(" ", ""),
+        phone_code = phone_code_msg.text.replace(" ", "")
     try:
         if telethon:
             client.sign_in(phone_number, phone_code, password=None)
@@ -280,11 +280,11 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False,
     except TimeoutError: msg.reply("ᴡᴀᴋᴛᴜ ʜᴀʙɪs.\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),)
     try:
         password = two_step_msg.text
-        if telethon:
+        if  telethon:
             client.sign_in(password=password)
         else:
             client.check_password(password=password)
-        if   cancelled(api_id_msg):
+        if  cancelled(api_id_msg):
             return
     except (PasswordHashInvalid, PasswordHashInvalidError, PasswordHashInvalid1):
         two_step_msg.reply("ᴩᴀssᴡᴏʀᴅ ᴅɪʙᴀᴡᴀʜ.\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", quote=True, reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),
