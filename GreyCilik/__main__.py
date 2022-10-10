@@ -256,7 +256,7 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False,
     except (ApiIdInvalid, ApiIdInvalidError, ApiIdInvalid1): msg.reply("**ᴀᴩɪ_ɪᴅ** ᴅᴀɴ **ᴀᴩɪ_ʜᴀsʜ** ᴋᴀᴍᴜ ᴛɪᴅᴀᴋ ᴄᴏᴄᴏᴋ ᴅᴇɴɢᴀɴ ᴋᴏᴍʙɪɴᴀsɪ ᴛᴇʟᴇɢʀᴀᴍ ᴀᴘᴘ, \nᴜʟᴀɴɢɪ ᴅᴀʀɪ ᴀᴡᴀʟ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),)
 
     except (PhoneNumberInvalid, PhoneNumberInvalidError, PhoneNumberInvalid1): msg.reply("ɴᴏᴍᴏʀ **ᴩʜᴏɴᴇ_ɴᴜᴍʙᴇʀ** ᴛɪᴅᴀᴋ ᴛᴇʀᴅᴀꜰᴛᴀʀ ᴅɪᴛᴇʟᴇɢʀᴀᴍ.\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴄᴏʙᴀ.", reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),)
-
+    client.connect()
     try:
         phone_code_msg = None
         if not is_bot:
