@@ -308,7 +308,7 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False,
 def cancelled(msg):
     if "/cancel" in msg.text:
         msg.reply("**ᴍᴇᴍʙᴀᴛᴀʟᴋᴀɴ ᴘʀᴏsᴇs ᴘᴇᴍʙᴜᴀᴛᴀɴ sᴛʀɪɴɢ!**",reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),
-    elif "/restart" in msg.text
+    elif "/restart" in msg.text:
         msg.reply("**sᴜᴋsᴇs ᴍᴇʀᴇsᴛᴀʀ ʙᴏᴛ!**", quote=True, reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),
         pass
     elif msg.text.startswith("/"):  # Bot Commands
