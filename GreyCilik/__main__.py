@@ -231,14 +231,13 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False,
     try:
         api_id = int(api_id_msg.text)
     except ValueError:
-        api_id_msg.reply("**ᴀᴘɪ_ɪᴅ** ʜᴀʀᴜs ʙᴇʀᴜᴘᴀ ᴀɴɢᴋᴀ, ᴍᴇᴍᴜʟᴀɪ ᴜʟᴀɴɢ ᴍᴇᴍʙᴜᴀᴛ sᴛʀɪɴɢ.", quote=True, reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),
+        api_id_msg.reply("**ᴀᴘɪ_ɪᴅ** ʜᴀʀᴜs ʙᴇʀᴜᴘᴀ ᴀɴɢᴋᴀ, ᴍᴇᴍᴜʟᴀɪ ᴜʟᴀɴɢ ᴍᴇᴍʙᴜᴀᴛ sᴛʀɪɴɢ.", quote=True, reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),)
     api_hash_msg =   bot.ask(user_id, "ᴘᴀsᴛᴇ **ᴀᴘɪ_ʜᴀsʜ** ᴅɪʙᴀᴡᴀʜ", filters=filters.text)
     if   cancelled(api_hash_msg):
         return
     api_hash = api_hash_msg.text
     t = "ᴘᴀsᴛᴇ **ᴘʜᴏɴᴇ_ɴᴜᴍʙᴇʀ** ᴅᴇɴɢᴀɴ ᴋᴏᴅᴇ ɴᴇɢᴀʀᴀ. \nᴄᴏɴᴛᴏʜ : `+6287654321`'"
     if   cancelled(phone_number_msg):
-        pass
         return
     phone_number = phone_number_msg.text
     msg.reply("ᴍᴇɴᴄᴏʙᴀ ᴍᴇɴɢɪʀɪᴍ ᴏᴛᴘ, ᴊᴀɴɢᴀɴ ʟᴜᴘᴀ ᴅɪᴘᴀsᴛᴇ ᴋᴀʟᴏ ᴜᴅᴀʜ ᴍᴀsᴜᴋ...")
