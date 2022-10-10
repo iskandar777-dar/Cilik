@@ -288,14 +288,13 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False,
             return
     except (PasswordHashInvalid, PasswordHashInvalidError, PasswordHashInvalid1):
         two_step_msg.reply("ᴩᴀssᴡᴏʀᴅ ᴅɪʙᴀᴡᴀʜ.\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", quote=True, reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),
-
-    if telethon:
-        string_session = client.session.save()
-    else:
-        string_session =   client.export_session_string()
-    text = f"**sᴇʟᴀᴍᴀᴛ, {ty} sᴛʀɪɴɢ sᴇssɪᴏɴ** \n\n`{string_session}` \n\n**ɢᴇɴᴇʀᴀᴛᴇᴅ ʙʏ :** @someddarbot\n **ɴᴏᴛᴇ :** ɢᴜɴᴀᴋᴀɴ ᴅᴇɴɢᴀɴ ʙɪᴊᴀᴋ ᴅᴀɴ ᴊᴀɴɢᴀɴ ʟᴜᴘᴀ ᴊᴏɪɴ @somedsupport"
-    client.connect()
-    
+    try:
+        if telethon:
+            string_session = client.session.save()
+        else:
+            string_session =   client.export_session_string()
+        text = f"**sᴇʟᴀᴍᴀᴛ, {ty} sᴛʀɪɴɢ sᴇssɪᴏɴ** \n\n`{string_session}` \n\n**ɢᴇɴᴇʀᴀᴛᴇᴅ ʙʏ :** @someddarbot\n **ɴᴏᴛᴇ :** ɢᴜɴᴀᴋᴀɴ ᴅᴇɴɢᴀɴ ʙɪᴊᴀᴋ ᴅᴀɴ ᴊᴀɴɢᴀɴ ʟᴜᴘᴀ ᴊᴏɪɴ @somedsupport"
+        client.connect()
     try:
         if not is_bot:
             client.send_message("me", text)
