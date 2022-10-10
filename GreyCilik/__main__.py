@@ -270,7 +270,7 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False,
     try:
         if telethon:
             client.sign_in(phone_number, phone_code, password=None)
-                else:
+        else:
             client.sign_in(phone_number, code.phone_code_hash, phone_code)
     except (PhoneCodeInvalid, PhoneCodeInvalidError, PhoneCodeInvalid1): msg.reply("ᴏᴛᴘ **sᴀʟᴀʜ.**\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),
 
