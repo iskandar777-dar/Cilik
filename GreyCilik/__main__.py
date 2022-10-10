@@ -277,9 +277,9 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False,
     except (SessionPasswordNeeded, SessionPasswordNeededError, SessionPasswordNeeded1): client.connect()
     try:
         two_step_msg =   bot.ask(user_id, "ᴘᴀsᴛᴇ **ᴠᴇʀɪꜰɪᴋᴀsɪ ᴅᴜᴀ ʟᴀɴɢᴋᴀʜ** ᴩᴀssᴡᴏʀᴅ ᴅɪʙᴀᴡᴀʜ.", filters=filters.text, timeout=300)
-        password = two_step_msg.text
-    except TimeoutError: msg.reply("ᴡᴀᴋᴛᴜ ʜᴀʙɪs.\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),
+    except TimeoutError: msg.reply("ᴡᴀᴋᴛᴜ ʜᴀʙɪs.\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),)
     try:
+        password = two_step_msg.text
         if telethon:
             client.sign_in(password=password)
             else:
