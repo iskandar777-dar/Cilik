@@ -265,30 +265,30 @@ def generate_session(update, context, bot: Client, msg: Message, telethon=False,
                 return
     except TimeoutError: msg.reply("ᴡᴀᴋᴛᴜ ʜᴀʙɪs.\n\nᴜʟᴀɴɢ ᴋᴇᴍʙᴀʟɪ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),
         phone_code = phone_code_msg.text.replace(" ", "")
-        try:
-            if telethon:
-                client.sign_in(phone_number, phone_code, password=None)
+    try:
+    if telethon:
+        client.sign_in(phone_number, phone_code, password=None)
             else:
-                client.sign_in(phone_number, code.phone_code_hash, phone_code)
-        except (PhoneCodeInvalid, PhoneCodeInvalidError, PhoneCodeInvalid1): msg.reply("ᴏᴛᴘ **sᴀʟᴀʜ.**\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),
-                
-        except (PhoneCodeExpired, PhoneCodeExpiredError, PhoneCodeExpired1): msg.reply("ᴏᴛᴘ **ᴋᴀᴅᴀʟᴜᴀʀsᴀ**\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),
-                
-        except (SessionPasswordNeeded, SessionPasswordNeededError, SessionPasswordNeeded1):
-            try:
-                two_step_msg =   bot.ask(user_id, "ᴘᴀsᴛᴇ **ᴠᴇʀɪꜰɪᴋᴀsɪ ᴅᴜᴀ ʟᴀɴɢᴋᴀʜ** ᴩᴀssᴡᴏʀᴅ ᴅɪʙᴀᴡᴀʜ.", filters=filters.text, timeout=300)
-            except TimeoutError: msg.reply("ᴡᴀᴋᴛᴜ ʜᴀʙɪs.\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),
-                
-            try:
-                password = two_step_msg.text
-                if telethon:
-                    client.sign_in(password=password)
-                else:
-                    client.check_password(password=password)
-                if   cancelled(api_id_msg):
-                    return
-            except (PasswordHashInvalid, PasswordHashInvalidError, PasswordHashInvalid1):
-                two_step_msg.reply("ᴩᴀssᴡᴏʀᴅ ᴅɪʙᴀᴡᴀʜ.\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", quote=True, reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),
+        client.sign_in(phone_number, code.phone_code_hash, phone_code)
+    except (PhoneCodeInvalid, PhoneCodeInvalidError, PhoneCodeInvalid1): msg.reply("ᴏᴛᴘ **sᴀʟᴀʜ.**\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),
+
+    except (PhoneCodeExpired, PhoneCodeExpiredError, PhoneCodeExpired1): msg.reply("ᴏᴛᴘ **ᴋᴀᴅᴀʟᴜᴀʀsᴀ**\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),
+    
+    except (SessionPasswordNeeded, SessionPasswordNeededError, SessionPasswordNeeded1):
+    try:
+        two_step_msg =   bot.ask(user_id, "ᴘᴀsᴛᴇ **ᴠᴇʀɪꜰɪᴋᴀsɪ ᴅᴜᴀ ʟᴀɴɢᴋᴀʜ** ᴩᴀssᴡᴏʀᴅ ᴅɪʙᴀᴡᴀʜ.", filters=filters.text, timeout=300)
+    except TimeoutError: msg.reply("ᴡᴀᴋᴛᴜ ʜᴀʙɪs.\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),
+
+    try:
+        password = two_step_msg.text
+        if telethon:
+            client.sign_in(password=password)
+            else:
+            client.check_password(password=password)
+        if   cancelled(api_id_msg):
+            return
+        except (PasswordHashInvalid, PasswordHashInvalidError, PasswordHashInvalid1):
+            two_step_msg.reply("ᴩᴀssᴡᴏʀᴅ ᴅɪʙᴀᴡᴀʜ.\n\nᴜʟᴀɴɢ ʟᴀɢɪ ᴀᴊᴀ.", quote=True, reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text=="ɢᴇɴᴇʀᴀᴛᴇ ʟᴀɢɪ", callback_data=="sesi")]),
 
     if telethon:
         string_session = client.session.save()
